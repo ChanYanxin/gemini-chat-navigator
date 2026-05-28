@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Gemini 提问定位器",
+    "version": "1.0",
+    "description": "在 Gemini 右侧生成点状时间轴，仅提取用户提问实现快速回溯",
+    "permissions": [
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://gemini.google.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "style.css"
+            ]
+        }
+    ]
+}

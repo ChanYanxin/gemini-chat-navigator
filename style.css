@@ -1,0 +1,70 @@
+/* 右侧悬浮工具栏主容器 */
+#gemini-question-navigator {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 99999;
+    /* 确保绝对图层在最上方 */
+    background: rgba(255, 255, 255, 0.15);
+    padding: 12px 8px;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    /* 磨砂玻璃效果 */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-height: 80vh;
+    overflow-y: auto;
+    /* 防止对话过多超出屏幕 */
+}
+
+/* 小圆点样式 */
+.gemini-nav-dot {
+    width: 18px;
+    height: 18px;
+    background-color: #4285f4;
+    /* Google 经典蓝 */
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    user-select: none;
+}
+
+/* 鼠标悬停时圆点放大并变色 */
+.gemini-nav-dot:hover {
+    background-color: #1a73e8;
+    transform: scale(1.3);
+    box-shadow: 0 0 8px rgba(66, 133, 244, 0.6);
+}
+
+/* 鼠标悬停时的文本预览框（Tooltip） */
+.gemini-nav-dot:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 28px;
+    /* 在圆点左侧弹出，绝不遮挡视口边缘 */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1e1e1f;
+    /* 适配暗色提示框 */
+    color: #ffffff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: normal;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    /* 穿透属性，防止鼠标晃动时误触 */
+}
